@@ -90,9 +90,39 @@ namespace Collection_generics
             list.Add(em4);
             list.Add(em5);
 
-            
+            if (list.Contains(em2))
+            {
+                Console.WriteLine($"{em2.GetType().Name}{em2.Id} object exists in the list");
+            }
+            else
+            {
+                Console.WriteLine($"{em2.GetType().Name}{em2.Id} object does not exists in the list");
+            }
 
+            Employee MaleEm = list.Find(employee => employee.Gender == "Male");
 
+            Console.WriteLine(" ");
+
+            if (MaleEm != null)
+            {
+                Console.WriteLine($"First male employee: {MaleEm.ToString()}");
+            }
+            else
+            {
+                Console.WriteLine("No males found");
+            }
+
+            List<Employee> EmMale = list.FindAll(employee => employee.Gender == "Male");
+
+            if (EmMale.Count > 0)
+            {
+                Console.WriteLine("Male emplooyees found");
+
+                foreach (Employee em in EmMale)
+                {
+                    Console.WriteLine(em.ToString());
+                }
+            }
 
             Console.ReadKey();
         }
